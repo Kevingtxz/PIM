@@ -1,0 +1,121 @@
+dir()
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+
+python manage.py createsuperuser
+python manage.py runserver
+
+from base.models import *
+
+# 1
+AC = State(initials='AC')
+AC.save()
+
+# 2
+AL = State(initials='AL')
+AL.save()
+
+# 3
+AP = State(initials='AP')
+AP.save()
+
+# 4
+AM = State(initials='AM')
+AM.save()
+
+# 5
+BA = State(initials='BA')
+BA.save()
+
+# 6
+CE = State(initials='CE')
+CE.save()
+
+# 7
+ES = State(initials='ES')
+ES.save()
+
+# 8
+GO = State(initials='GO')
+GO.save()
+
+# 9
+MA = State(initials='MA')
+MA.save()
+
+# 10
+MT = State(initials='MT')
+MT.save()
+
+# 11
+MS = State(initials='MS')
+MS.save()
+
+# 12
+MG = State(initials='MG')
+MG.save()
+
+# 13
+PA = State(initials='PA')
+PA.save()
+
+# 14
+PB = State(initials='PB')
+PB.save()
+
+# 15
+PR = State(initials='PR')
+PR.save()
+
+# 16
+PE = State(initials='PE')
+PE.save()
+
+# 17
+PI = State(initials='PI')
+PI.save()
+
+# 18
+RJ = State(initials='RJ')
+RJ.save()
+
+# 19
+RN = State(initials='RN')
+RN.save()
+
+# 20
+RS = State(initials='RS')
+RS.save()
+
+# 21
+RO = State(initials='RO')
+RO.save()
+
+# 22
+RR = State(initials='RR')
+RR.save()
+
+# 23
+SC = State(initials='SC')
+SC.save()
+
+# 24
+SP = State(initials='SP')
+SP.save()
+
+# 25
+SE = State(initials='SE')
+SE.save()
+
+# 26
+TO = State(initials='TO')
+TO.save()
+
+# 27
+DF = State(initials='DF')
+DF.save()
+
+Macae = City(name='Macaé', state=RJ)
+Macae.save()
