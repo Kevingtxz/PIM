@@ -51,6 +51,17 @@ class StandardUser(models.Model):
     address = models.OneToOneField(Address, on_delete=models.CASCADE, blank=True, null=True)
 
 
+class News(models.Model):
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    pic = models.ImageField(default='New.png', blank=True, null=True)
+    title = models.CharField(max_length=100, blank=True, null=True)
+    text = models.CharField(max_length=400, blank=True, null=True)
+    link = models.CharField(max_length=200, blank=True, null=True)
+    poster = models.CharField(max_length=200, blank=True, null=True)
+    
+    standard_user_poster = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
 class MasteryArea(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     name = models.CharField(max_length=200)
@@ -90,8 +101,8 @@ class Carrear(models.Model):
 
 class Page(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
-    text = models.CharField(max_length=1500, blank=True)
-# Add somethings
+    title = models.CharField(max_length=200, blank=True, null=True)
+    text = models.CharField(max_length=1500, blank=True, null=True)
 
 class Content(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
@@ -103,6 +114,7 @@ class Elo(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     mentors = models.ManyToManyField(Mentor)
     contents = models.ManyToManyField(Content)
+    telegram = models.CharField(max_length=200, blank=True, null=True)
     class Meta:
         abstract = True
 
