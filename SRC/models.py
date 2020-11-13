@@ -43,7 +43,7 @@ EDUCATIONS = [
     ('F', 'Fundamental'),
 ]
 
-class Mentor(models.Model):
+class StandardUser(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     profile_pic = models.ImageField(default='profile1.png', blank=True, null=True)
     nickname = models.CharField(max_length=200, blank=True, null=True)
@@ -51,18 +51,22 @@ class Mentor(models.Model):
     lastname = models.CharField(max_length=200, blank=True, null=True)
     birth = models.CharField(max_length=8, blank=True, null=True)
     phone = models.CharField(max_length=11, blank=True, null=True)
+    telegram = models.CharField(max_length=200, blank=True, null=True)
+    about_me = models.CharField(max_length=5000, blank=True, null=True)
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE, blank=True, null=True)
+
+class Mentor(models.Model):
     education_Level = models.CharField(max_length=1, choices=EDUCATIONS)
     education = models.CharField(max_length=200, blank=True, null=True)
-    telegram = models.CharField(max_length=200, blank=True, null=True)
     mastery_area = models.CharField(max_length=200, blank=True, null=True)
-    about_me = models.CharField(max_length=5000, blank=True, null=True)
     linkedin = models.CharField(max_length=200, blank=True, null=True)
     latters	= models.CharField(max_length=200, blank=True, null=True)
     
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
     carrear = models.OneToOneField('Carrear', on_delete=models.CASCADE)
-
+    
 
 
 class DaysUsing(models.Model):
@@ -107,7 +111,7 @@ TYPEPERMISSIONS = [
 
 class UserPermission(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
-    mentor = models.OneToOneField(Mentor, on_delete=models.CASCADE)
+    standard_user = models.OneToOneField(StandardUser, on_delete=models.CASCADE)
     type_permission = models.CharField(max_length=1)
 
 class UserPermissionCommentary(UserPermission):
@@ -117,12 +121,12 @@ class Commentary(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     text = models.CharField(max_length=500)
     is_public = models.BooleanField(default=False)
-    mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
+    standard_user = models.ForeignKey(StandardUser, on_delete=models.CASCADE)
 
 class Vote(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
-    mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
-    user_permission_poster = models.ForeignKey(UserPermission, on_delete=models.CASCADE)
+    mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE, blank=True)
+    user_permission_poster = models.ForeignKey(UserPermission, on_delete=models.CASCADE, blank=True)
     class Meta:
         abstract = True
 
