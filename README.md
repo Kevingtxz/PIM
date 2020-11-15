@@ -2,19 +2,11 @@
 
 Tabela de conteúdos
 =================
-<!--ts-->
-   * [Sobre](#Sobre)
-   * [Algoritmo](#Algoritmo)
-   * [Tecnologias](#tecnologias)
-   * [License](#License)
-<!--te-->
 <p align="center">
- <a href="#objetivo">Objetivo</a> •
- <a href="#roadmap">Roadmap</a> • 
- <a href="#tecnologias">Tecnologias</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
- <a href="#autor">Autor</a>
+ <a href="#Sobre">Sobre</a> •
+ <a href="#Algoritmo">Algoritmo</a> • 
+ <a href="#Tecnologias">Tecnologias</a> • 
+ <a href="#License">License</a> • 
 </p>
 
 ## Sobre
