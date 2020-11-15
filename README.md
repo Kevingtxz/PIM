@@ -1,6 +1,4 @@
 # InovAtiva PIM - Backend
-
-Tabela de conteúdos
 =================
 <p align="center">
  <a href="#Sobre">Sobre</a> •
