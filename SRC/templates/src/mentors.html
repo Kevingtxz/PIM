@@ -1,0 +1,7 @@
+{% for mentor in mentors %}
+    {% include 'src/mentor_display.html' %}
+{% endfor %}
+
+<a href ={% url mentor_profile x.id  %} class='btn btn-primary' style="float: right;" >
+    Know More
+</a>

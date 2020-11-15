@@ -1,0 +1,25 @@
+{%  extends 'src/main.html' %}
+{% block content %}
+<div class="global_home_page">
+    <div class="home_page">
+        <div class="content_home">
+            <div class="colunm_home">
+            <div class="title_home">
+                <p>{{content.title}}</p>
+            </div>
+            <div class="home_description">
+            {% for page in pages %}
+                <p>{{page.text}}</p>
+                <p>{{content.region.name}}</p>
+            {% endfor %}
+            </div>
+                <a href="{{page.link}}"><button>Entre</button></a>
+            </div>
+        </div>
+        <div class="image_home">
+            <div class="overlay_image">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

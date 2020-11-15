@@ -1,9 +1,12 @@
-# import django_filters
-# from .models import *
+import django_filters
+from .models import *
 
-# class QuestionFilter(django_filters.FilterSet):
-#     note = django_filters.CharFilter(field_name='text', lookup_expr='icontains')
-#     teacher = django_filters.CharFilter(field_name='teacher_name', lookup_expr='icontains')
-#     class Meta:
-#         model = Question
-#         fields = ['education_Level', 'year', 'difficult', 'exams', 'subject', 'university', 'books',]
+class MentorFilter(django_filters.FilterSet):
+    class Meta:
+        model = Mentor
+        fields = ['education_Level', 'nickname', 'elo', 'region',]
+
+class MissionFilter(django_filters.FilterSet):
+    class Meta:
+        model = Mission
+        fields = ['region', 'text', 'title', 'elo',]

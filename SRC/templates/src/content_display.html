@@ -1,0 +1,6 @@
+{{content.title}}
+{{content.region.name}}
+{{content.elo.name}}
+{% for page in pages %}
+    {% include 'src/page_display.html' %}
+{% endfor %}

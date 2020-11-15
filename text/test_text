@@ -7,7 +7,7 @@ python manage.py shell
 python manage.py createsuperuser
 python manage.py runserver
 
-from base.models import *
+from src.models import *
 
 # 1
 AC = State(initials='AC')
@@ -119,3 +119,61 @@ DF.save()
 
 Macae = City(name='Macaé', state=RJ)
 Macae.save()
+
+Rio = City(name='Rio de Janeiro', state=RJ)
+Rio.save()
+
+Lagos = Region(name='Região dos Lagos', state=RJ)
+Lagos.save()
+
+# Region(name='', state=iniciais)
+
+Bronze = Elo(name='Bronze')
+Bronze.save()
+Silver = Elo(name='Silver')
+Silver.save()
+Gold = Elo(name='Gold')
+Gold.save()
+
+Jonas = Mentor(nickname='Jonas', education='Phd Ciência da Computação', linkedin='linkedin.com/jonas', laters='laters.com/jonas', phone ='2284144210', about_me='', education_Level='P', region=Lagos, focus_areas='Computação', years_experience=10)
+Jonas.save()
+JonasPoster = Poster(mentor=Jonas)
+JonasPoster.save()
+
+LiderJoao = Mentor(nickname='LiderJoao', education='Doutor em Ciencias Sociais', linkedin='linkedin.com/joao', laters='laters.com/joao', phone ='2284144224', about_me='', education_Level='P', region=Lagos, focus_areas='Ciencias Sociais', years_experience=20)
+LiderJoao.save()
+LiderJoaoPoster = Poster(mentor=LiderJoao)
+LiderJoaoPoster.save()
+
+votesupJoao = VoteSupport(mentor=LiderJoao, poster=JonasPoster)
+votesupJoao.save()
+
+voteengJoao = VoteEngagement(mentor=LiderJoao, poster=JonasPoster)
+voteengJoao.save()
+
+voteknowoao = VoteKnowledge(mentor=LiderJoao, poster=JonasPoster)
+voteknowoao.save()
+
+votescomoao = VoteCommunication(mentor=LiderJoao, poster=JonasPoster)
+votescomoao.save()
+
+votesgodJoao = VoteGoodToWork(mentor=LiderJoao, poster=JonasPoster)
+votesgodJoao.save()
+
+votecomJonas = VoteCommunication(mentor=Jonas, poster=LiderJoaoPoster)
+votecomJonas.save()
+
+votesgodJonas = VoteGoodToWork(mentor=Jonas, poster=LiderJoaoPoster)
+votesgodJonas.save()
+
+inicial = Content(title='InovAtiva PIM', region=Lagos, elo=Bronze)
+inicial.save()
+
+PromovaInovacao = Mission(title='Promova inovação', region=Lagos, text='Ajude 3 empreendedores a iniciar seus empreendimentos em sua região', elo=Bronze)
+PromovaInovacao.save()
+
+commentJonas = Commentary(text='O melhor mentor que já vi', mentor=Jonas)
+commentJonas.save()
+
+iniciacaoConcluida = Trophy(title='Missão Promova a Inovação concluída', text='Um grande avanço para a nossa comunidade, parabéns Jonas', mentor=Jonas, elo=Bronze, poster=LiderJoaoPoster)
+iniciacaoConcluida.save()

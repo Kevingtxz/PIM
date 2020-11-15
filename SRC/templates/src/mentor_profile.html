@@ -1,0 +1,21 @@
+{{mentor.profile_pic}}
+{{mentor.nickname}}
+{{mentor.education}}
+{{mentor.linkedin}}
+{{mentor.laters}}
+{{mentor.phone}}
+{{mentor.telegram}}
+{{mentor.about_me}}
+{{mentor.elo.name}}
+{{support}}
+{{engagement}}
+{{knowledge}}
+{{communication}}
+{{good_to_work}}
+
+{% for focus_area in focus_areas %}
+    {% include 'src/mentor_profile_focus_area.html' %}  
+{% endfor %}
+{% for trophy in mentor.trophy_set.all %}
+    {% include 'src/trophy.html' %}   
+{% endfor %}

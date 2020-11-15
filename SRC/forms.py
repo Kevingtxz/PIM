@@ -1,32 +1,38 @@
-# from django.core.exceptions import ValidationError
-# from django.forms import ModelForm
-# from django.contrib.auth.forms import UserCreationForm
-# from django.contrib.auth.models import User
-# from django import forms
+from django.core.exceptions import ValidationError
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django import forms
 
-# from .models import *
+from .models import *
 
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'email',
+            'password1',
+            'password2',
+        )
 
-# class CityForm(ModelForm):
-#     class Meta:
-#         model = City
-#         fields = '__all__'
+class MentorForm(ModelForm):
+    class Meta:
+        model = Mentor
+        fields = '__all__'
 
+class RegionForm(ModelForm):
+    class Meta:
+        model = Region
+        fields = '__all__'
 
-# class AddressForm(ModelForm):
-#     class Meta:
-#         model = Address
-#         fields = '__all__'
+class ContentForm(ModelForm):
+    class Meta:
+        model = Content
+        fields = '__all__'
+        exclude = ('poster',)
 
-
-
-
-# class CreateUserForm(UserCreationForm):
-#     class Meta:
-#         model = User
-#         fields = (
-#             'username',
-#             'email',
-#             'password1',
-#             'password2',
-#         )
+class CommentaryForm(ModelForm):
+    class Meta:
+        model = Commentary
+        fields = '__all__'

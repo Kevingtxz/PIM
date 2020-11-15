@@ -1,0 +1,49 @@
+{%  extends 'src/main.html' %}
+{% block content %}
+    <div class="global_login">
+        <div class="main_login">
+            <div class="login">
+                <p>Bem vindo</p>
+					<form method="POST" action="">
+						{% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+
+						<div class="input-group mb-2">
+							<div class="field">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+
+								<input type="password" name="password" placeholder="Password..." class="form-control" >
+							</div>
+
+							<div class="field">
+								<input class="btn login_btn" type="submit" value="Login">
+							  </div>
+							<div class="field">
+				 				<input class="btn login_btn" type="submit" value="Voltar">
+				   			</div>
+					</form>
+					<div class="mt-4">
+						<div>
+							Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
+						</div>	
+						<div class="mt-4">
+							{% comment %} <div>
+								Forgot password? <a href="{% url 'reset_password' %}" class="ml-2">Reset password</a>
+							</div>
+							 {% endcomment %}
+					</div>
+                </div>
+
+            </div>
+            <div class="overlay_login">
+            </div>
+        </div>
+    </div>
+{% endblock %}

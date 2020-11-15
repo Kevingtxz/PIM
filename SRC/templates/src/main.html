@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+</head>
+    <body>
+        <header>
+            <div class="main_header">
+                <div class="logo">
+                    <a href="/"><img src="img/logo.png" alt=""></a>
+                </div>
+                <div class="links">
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="/">Home</a>
+                </div>
+            </div>
+        </header>
+        {% block content %} 
+
+        {% endblock %}
+        <div class="footer">
+            <p>© 2020 Copyright | InovAtiva PIM</p>
+        </div>
+    </body>
+</html>
