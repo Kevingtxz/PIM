@@ -13,6 +13,7 @@ class Region(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     state = models.ForeignKey(State, on_delete=models.PROTECT, blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
+    bonus = models.IntegerField(blank=True, null=True)
 
 class Elo(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)

@@ -85,9 +85,7 @@ def mentors(request):
 
 def rankingMentors(request):
     filter = MentorFilter(
-        request.GET, queryset=Mentor.objects.filter(
-
-        )
+        request.GET, queryset= Count('points_general', filter=Mentor(points_general__rating__gt=5))
     )
     paginator = Paginator(filter.qs, 10)
     page = request.GET.get('page')
@@ -107,7 +105,8 @@ def mentorProfile(request, id):
     mentor = Mentor.objects.get(id=id)
     if request.method == 'POST':
         poster = Poster.objects.get(id=request.id)
-        vote = VoteSupport(mentor=mentor, poster = poster)        
+        vote = VoteSupport(mentor=mentor, poster = poster)
+        mentor.points_general += 10 * mentor.region.bonus
     support = mentor.votesupport_set.all().count()
     engagement = mentor.voteengagement_set.all().count()
     knowledge = mentor.voteknowledge_set.all().count()
