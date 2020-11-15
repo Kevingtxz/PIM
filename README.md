@@ -22,4 +22,5 @@ Python, Django, HTML, CSS, Javascript
 O algorimo utiliza a média aritmédica de mentores por região e a divide pelo número de mentores em cada região e então multiplica esse valor por 10%, de maneira que o bonus regional em regiões com menos mentores sempre serão muito maiores as capitais. Isso servirá de base para adptação com inteligencia artificia e TensorFlow no futuro
 
 =======================================================================================
+## Licence
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
