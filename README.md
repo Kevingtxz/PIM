@@ -8,6 +8,7 @@ Tabela de conteúdos
    * [Instalação](#instalacao)
    * [Algoritmo](#Algoritmo)
    * [Tecnologias](#tecnologias)
+   * [License](#License)
 <!--te-->
 
 ## Sobre
