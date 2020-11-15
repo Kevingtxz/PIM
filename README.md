@@ -4,7 +4,7 @@
  <a href="#Sobre">Sobre</a> •
  <a href="#Algoritmo">Algoritmo</a> • 
  <a href="#Tecnologias">Tecnologias</a> • 
- <a href="#License">License</a> • 
+ <a href="#Licence">Licence</a> • 
 </p>
 
 
