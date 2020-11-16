@@ -23,7 +23,7 @@ O algorimo utiliza a média aritmédica de mentores por região e a divide pelo 
 ## Manual
 Primeiro certifiquesse de instalar devidamente Python (https://www.python.org/downloads/) 
 Segundo, utilize o comando 'pip install -r requirements' para instalar todos os requerimentos da aplicação.
-Terceito, baixe a pasta completa e digite 'python manage.py makemigrations' seguido de 'python manage.py migrate' e então 'python manage.py runserver', após isso o programa estará rodando em 'http://127.0.0.1:8000/' com o comando 'python manage.py runserver' e você pode alterar os dados em 'http://127.0.0.1:8000/admin', o frontend está separado então não será possível navegar pelo site devidamente. Porém as páginas views estão prontas.
+Terceito, baixe a pasta completa e digite 'python manage.py makemigrations' seguido de 'python manage.py migrate' e então 'python manage.py runserver', após isso o programa estará rodando em 'http://127.0.0.1:8000/' com o comando 'python manage.py runserver' e você pode alterar os dados em 'http://127.0.0.1:8000/admin' ou utilizando 'python manage.py shell', o frontend está separado então não será possível navegar pelo site devidamente. Porém as páginas views estão prontas.
 
 ## Licence
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
