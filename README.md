@@ -33,7 +33,7 @@ O algorimo utiliza a média aritmédica de mentores por região e a divide pelo 
 
 6. Vá a página 'http://127.0.0.1:8000/admin' e poderá alterar os dados ou pode fazer isso manualmente com o comando 'python manage.py shell' dentro do shell
 
-7 O frontend está separado então não será possível navegar pelo site devidamente. Porém as páginas views estão prontas.
+7. O frontend está separado então não será possível navegar pelo site devidamente. Porém as páginas views estão prontas.
 
 ## Licence
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
