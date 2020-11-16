@@ -9,7 +9,9 @@
 
 
 ## Sobre
-InovAtiva PIM é um projeto para revolucionar a forma que os mentores são vistos. Isso, porque no InovAtiva PIM o mentor  terá acesso a uma lista de cursos introdutórios para atuar na mentoria com maior eficiencia e em sequencia a missões regionais, que serão base para troféus, os quais poderão ser adicionados a seus currículos e o premiarão por suas atuações a favor do empreendimento regional.
+Espaço para iniciação de mentoria dentro da plataforma da InovAtiva possibilitando pessoas interessadas e qualificadas para realizar atividade de mentoria.
+Através deste ambiente mais amigável para novatos, é possívem ingressar em uma trilha de desenvolvimento do mentor, e fazer parte de um sistema de ranking aberto para votos de investidores e mentores experientes da InovAtiva.
+
 
 ## Tecnologias
 Python, Django, HTML, CSS, Javascript
