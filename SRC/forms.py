@@ -20,10 +20,11 @@ class Voteform():
         model = Vote
         fields = '__all__'
 
-class MentorForm(ModelForm):
+class MentorFormUpdate(ModelForm):
     class Meta:
         model = Mentor
         fields = '__all__'
+        exclude = ('user', 'elo', 'points_general', 'birth', 'date_created')
 
 class RegionForm(ModelForm):
     class Meta:

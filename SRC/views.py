@@ -50,24 +50,34 @@ def myProfile(request):
         mentor = Mentor.objects.get(id=request.id)
         if MentorFormUpdate.nickname:
             mentor.nickname = MentorFormUpdate.nickname
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.education:
             mentor.education = MentorFormUpdate.education
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.linkedin:
             mentor.linkedin = MentorFormUpdate.linkedin
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.laters:
             mentor.laters = MentorFormUpdate.laters
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.phone:
             mentor.phone = MentorFormUpdate.phone
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.telegram:
             mentor.telegram = MentorFormUpdate.telegram
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.about_me:
             mentor.about_me = MentorFormUpdate.about_me
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.education_Level:
             mentor.education_Level = MentorFormUpdate.education_Level
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.focus_areas:
             mentor.focus_areas = MentorFormUpdate.focus_areas
+            mentor.points_general += mentor.region.bonus * 30
         if MentorFormUpdate.years_experience:
             mentor.years_experience = MentorFormUpdate.years_experience
+            mentor.points_general += mentor.region.bonus * 30
         mentor.save()
     context = {
         'form':form
@@ -86,6 +96,7 @@ def home(request):
 @login_required(login_url='login')
 def course(request):
     contents = Content.objects.all()
+    request.user.mentor.points_general += mentor.region.bonus * 100
     context = {
         'contents' : contents,
     }
@@ -114,17 +125,7 @@ def mentors(request):
 
 
 def rankingMentors(request):
-    filter = MentorFilter(
-        request.GET, queryset= Count('points_general', filter=Mentor(points_general__rating__gt=5))
-    )
-    paginator = Paginator(filter.qs, 10)
-    page = request.GET.get('page')
-    try:
-        mentors = paginator.page(page)
-    except PageNotAnInteger:
-        carrears = paginator.page(1)
-    except EmptyPage:
-        mentors = paginator.page(paginator.num_pages)
+    mentors = request.GET, queryset= Count('points_general', filter=Mentor(points_general__rating__gt=5))
     context = {
         'mentors' : mentors,
     }
@@ -134,19 +135,16 @@ def rankingMentors(request):
 def mentorProfile(request, id):
     mentor = Mentor.objects.get(id=id)
     form = VoteForm()
-
-    vote_support = Vote.objects.filter(vote_support=True).count()
-    vote_engagement = Vote.objects.filter(vote_engagement=True).count()
-    vote_knowledge = Vote.objects.filter(vote_knowledge=True).count()
-    vote_communication = Vote.objects.filter(vote_communication=True).count()
-    vote_good_to_work = Vote.objects.filter(vote_good_to_work=True).count()
-
     if request.method == 'POST':
         poster = Poster.objects.get(id=request.id)
-        vote = VoteSupport(mentor=mentor, poster = poster)
         vote.save()
-        mentor.points_general += 10 * mentor.region.bonus
+        mentor.points_general += 20 * mentor.region.bonus
         mentor.save()
+    vote_support = Vote.objects.filter(mentor=mentor, vote_support=True).count()
+    vote_engagement = Vote.objects.filter(mentor=mentor, vote_engagement=True).count()
+    vote_knowledge = Vote.objects.filter(mentor=mentor, vote_knowledge=True).count()
+    vote_communication = Vote.objects.filter(mentor=mentor, vote_communication=True).count()
+    vote_good_to_work = Vote.objects.filter(mentor=mentor, vote_good_to_work=True).count()
     context = {
         'mentor' : mentor,
         'form' : form,
