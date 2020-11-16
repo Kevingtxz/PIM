@@ -94,22 +94,10 @@ class Trophy(models.Model):
 
 class Vote(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
-    mentor = models.ForeignKey(Mentor, null=True, blank=True)
-    poster = models.ForeignKey(Poster, null=True, blank=True)
-    class Meta:
-        abstract = True
-
-class VoteSupport(Vote):
-    pass
-
-class VoteEngagement(Vote):
-    pass
-
-class VoteKnowledge(Vote):
-    pass
-
-class VoteCommunication(Vote):
-    pass
-
-class VoteGoodToWork(Vote):
-    pass
+    mentor = models.ForeignKey(Mentor, null=True, blank=True, on_delete=models.CASCADE)
+    poster = models.ForeignKey(Poster, null=True, blank=True, on_delete=models.CASCADE)
+    vote_support = models.BooleanField(default=False, blank=True)
+    vote_engagement = models.BooleanField(default=False, blank=True)
+    vote_knowledge = models.BooleanField(default=False, blank=True)
+    vote_communication = models.BooleanField(default=False, blank=True)
+    vote_good_to_work = models.BooleanField(default=False, blank=True)

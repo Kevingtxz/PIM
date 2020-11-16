@@ -15,6 +15,10 @@ class CreateUserForm(UserCreationForm):
             'password1',
             'password2',
         )
+class Voteform():
+    class Meta:
+        model = Vote
+        fields = '__all__'
 
 class MentorForm(ModelForm):
     class Meta:

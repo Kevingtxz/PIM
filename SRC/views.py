@@ -11,18 +11,18 @@ from .filters import *
 
 def registerPage(request):
     form = CreateUserForm()
-    if request.method == "POST":
+    if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            username = form.cleaned_data.get("username")
+            username = form.cleaned_data.get('username')
             mentor = Mentor.objects.create(user=user)
             Poster.objects.create(mentor=mentor)
-            messages.success(request, "Account was created for " + username)
+            messages.success(request, 'Account was created for' + username)
             
-            return redirect("login")
+            return redirect('login')
 
-    context = {"form": form}
+    context = {'form': form}
     return render(request, 'src/register.html', context)
 
 
@@ -35,7 +35,7 @@ def loginPage(request):
             login(request, user)
             return redirect('missions')
         else:
-            messages.info(request, "Username OR password is incorrect")
+            messages.info(request, 'Username OR password is incorrect')
     context = {}
     return render(request, "src/login.html", context)
      
@@ -43,6 +43,36 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+def myProfile(request):
+    form = MentorFormUpdate()
+    if request.method == 'PUT':
+        mentor = Mentor.objects.get(id=request.id)
+        if MentorFormUpdate.nickname:
+            mentor.nickname = MentorFormUpdate.nickname
+        if MentorFormUpdate.education:
+            mentor.education = MentorFormUpdate.education
+        if MentorFormUpdate.linkedin:
+            mentor.linkedin = MentorFormUpdate.linkedin
+        if MentorFormUpdate.laters:
+            mentor.laters = MentorFormUpdate.laters
+        if MentorFormUpdate.phone:
+            mentor.phone = MentorFormUpdate.phone
+        if MentorFormUpdate.telegram:
+            mentor.telegram = MentorFormUpdate.telegram
+        if MentorFormUpdate.about_me:
+            mentor.about_me = MentorFormUpdate.about_me
+        if MentorFormUpdate.education_Level:
+            mentor.education_Level = MentorFormUpdate.education_Level
+        if MentorFormUpdate.focus_areas:
+            mentor.focus_areas = MentorFormUpdate.focus_areas
+        if MentorFormUpdate.years_experience:
+            mentor.years_experience = MentorFormUpdate.years_experience
+        mentor.save()
+    context = {
+        'form':form
+    }
+
 
 
 def home(request):
@@ -53,7 +83,7 @@ def home(request):
     return render(request, 'src/home.html', context)
 
 
-@login_required(login_url="login")
+@login_required(login_url='login')
 def course(request):
     contents = Content.objects.all()
     context = {
@@ -103,17 +133,23 @@ def rankingMentors(request):
 
 def mentorProfile(request, id):
     mentor = Mentor.objects.get(id=id)
+    form = VoteForm()
+
+    vote_support = Vote.objects.filter(vote_support=True).count()
+    vote_engagement = Vote.objects.filter(vote_engagement=True).count()
+    vote_knowledge = Vote.objects.filter(vote_knowledge=True).count()
+    vote_communication = Vote.objects.filter(vote_communication=True).count()
+    vote_good_to_work = Vote.objects.filter(vote_good_to_work=True).count()
+
     if request.method == 'POST':
         poster = Poster.objects.get(id=request.id)
         vote = VoteSupport(mentor=mentor, poster = poster)
+        vote.save()
         mentor.points_general += 10 * mentor.region.bonus
-    support = mentor.votesupport_set.all().count()
-    engagement = mentor.voteengagement_set.all().count()
-    knowledge = mentor.voteknowledge_set.all().count()
-    communication = mentor.votecommunication_set.all().count()
-    good_to_work = mentor.votegoodtowork_set.all().count()
+        mentor.save()
     context = {
         'mentor' : mentor,
+        'form' : form,
         'support' : support,
         'engagement' : engagement,
         'knowledge' : knowledge,
@@ -123,7 +159,7 @@ def mentorProfile(request, id):
     return render(request, 'src/mentor_profile.html', context)
 
 
-@login_required(login_url="login")
+@login_required(login_url='login')
 def missions(request):
     filter = MissionFilter(
         request.GET, queryset=Mission.objects.filter(is_public=True)
@@ -144,19 +180,3 @@ def missions(request):
         'missions_num': missions_num,
     }
     return render(request, 'src/missions.html', context)
-
-
-# @login_required(login_url='login')
-# def missionPost(request):
-#     form = MissionForm()
-#     if request.method == 'POST':
-#         poster = Poster.objects.filter(mentor= request.user)
-# # add poster to form
-#         form = MissionForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('missions/')
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, 'src/mission_post.html', context)
