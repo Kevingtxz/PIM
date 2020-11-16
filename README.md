@@ -2,7 +2,7 @@
 
 <p align="center">
  <a href="#Sobre">Sobre</a> •
- <a href="#Formula do bônus - Algoritmo">Formula do bônus - Algoritmo</a> • 
+ <a href="#Algoritmo">Formula do bônus - Algoritmo</a> • 
  <a href="#Tecnologias">Tecnologias</a> • 
  <a href="#Manual">Manual</a> • 
  <a href="#Licence">Licence</a> • 
@@ -17,10 +17,10 @@ Através deste ambiente mais amigável para novatos, é possívem ingressar em u
 ## Tecnologias
 Python, Django, HTML, CSS, Javascript
 
-## Formula do bônus - Algoritmo
+## Algoritmo
 O algorimo utiliza a média aritmédica de mentores por região e a divide pelo número de mentores em cada região e então multiplica esse valor por 10%, de maneira que o bonus regional em regiões com menos mentores sempre serão muito maiores as capitais. Isso servirá de base para adptação com inteligencia artificia e TensorFlow no futuro
 
-                    Formula
+                    Formula do bônus
 1. Retirar a média aritmédica de mentores por região
 2. Dividir esse valor para cada região individualmente
 3. Multiplicar esse valor por 10%
