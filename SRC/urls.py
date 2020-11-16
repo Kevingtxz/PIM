@@ -11,5 +11,6 @@ urlpatterns = [
     path('ranking_mentors/', views.rankingMentors, name='ranking_mentors'),
     path('mentor_profile/<int:id>/', views.mentorProfile, name='mentor_profile'), 
     path('missions/', views.missions, name='missions'),    
+    path('my_profile/', views.myProfile, name='my_profile'),
     # path('mission_post/', views.missionPost, name='mission_post'),
 ]

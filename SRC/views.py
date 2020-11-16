@@ -33,7 +33,7 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('missions')
+            return redirect('my_profile')
         else:
             messages.info(request, 'Username OR password is incorrect')
     context = {}
@@ -82,8 +82,7 @@ def myProfile(request):
     context = {
         'form':form
     }
-
-
+    return render(request, 'src/my_profile.html', context)
 
 def home(request):
     content = Content.objects.get(id=1)
