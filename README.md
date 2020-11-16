@@ -21,9 +21,19 @@ Python, Django, HTML, CSS, Javascript
 O algorimo utiliza a média aritmédica de mentores por região e a divide pelo número de mentores em cada região e então multiplica esse valor por 10%, de maneira que o bonus regional em regiões com menos mentores sempre serão muito maiores as capitais. Isso servirá de base para adptação com inteligencia artificia e TensorFlow no futuro
 
 ## Manual
-Primeiro certifiquesse de instalar devidamente Python (https://www.python.org/downloads/) 
-Segundo, utilize o comando 'pip install -r requirements' para instalar todos os requerimentos da aplicação.
-Terceito, baixe a pasta completa e digite 'python manage.py makemigrations' seguido de 'python manage.py migrate' e então 'python manage.py runserver', após isso o programa estará rodando em 'http://127.0.0.1:8000/' com o comando 'python manage.py runserver' e você pode alterar os dados em 'http://127.0.0.1:8000/admin' ou utilizando 'python manage.py shell', o frontend está separado então não será possível navegar pelo site devidamente. Porém as páginas views estão prontas.
+1. Certifiquesse de instalar devidamente Python (https://www.python.org/downloads/) 
+
+2. -'pip install -r requirements'- para instalar todos os requerimentos da aplicação.
+
+3. Baixe a pasta complet
+
+4. Utilize os comandos'python manage.py makemigrations' e 'python manage.py migrate' para ativar o banco de dados. 
+
+5. Utilize o comando 'python manage.py runserver', após isso o programa estará rodando em 'http://127.0.0.1:8000/' 
+
+6. Vá a página 'http://127.0.0.1:8000/admin' e poderá alterar os dados ou pode fazer isso manualmente com o comando 'python manage.py shell' dentro do shell
+
+7 O frontend está separado então não será possível navegar pelo site devidamente. Porém as páginas views estão prontas.
 
 ## Licence
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
